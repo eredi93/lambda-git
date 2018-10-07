@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+lambda-git = {editable = true, path = "."}
+
+[dev-packages]
+mock = ">=2.0.0"
+nose = ">=1.3.7"
+
+[requires]
+python_version = "2.7"
