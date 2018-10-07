@@ -1,5 +1,5 @@
 # lambda-git
-A git binary installed through PyPI for AWS Lambda - inspired by the JavaScript package [lambda-git](https://github.com/pimterry/lambda-git) and backported to Python.
+A git binary installed through PyPI for AWS Lambda - inspired by the JavaScript package [lambda-git](https://github.com/pimterry/lambda-git).
 
 ## Installation
 
