@@ -1,0 +1,2 @@
+class GitExecutionError(Exception):
+    pass
