@@ -40,11 +40,13 @@ if not find_executable('git'):
     os.environ['LD_LIBRARY_PATH'] = LD_LIBRARY_PATH
 
 
-def exec_command(args, cwd='/tmp', env=os.environ):
-    command = ['git'] + args
+def exec_command(*args, **kwargs):
+    options = dict({'cwd': '/tmp', 'env': os.environ}, **kwargs)
+    command = ['git'] + list(args)
     LOGGER.info('executing git command: "{}"'.format(' '.join(command)))
     p = subprocess.Popen(command, stdout=subprocess.PIPE,
-                         stderr=subprocess.PIPE, cwd=cwd, env=env)
+                         stderr=subprocess.PIPE, cwd=options['cwd'],
+                         env=options['env'])
     stdout, stderr = p.communicate()
     if p.returncode != 0:
         LOGGER.error('git failed with {} returncode'.format(p.returncode))

@@ -6,7 +6,7 @@ To use this, just require it and call `exec_command`. E.g:
 ```python
 import git
 
-git.exec_command(['init'])
+git.exec_command('init')
 ```
 
 ## Executing commands in a specific path:
@@ -18,7 +18,7 @@ import git
 
 new_repo_path = '/tmp/my-new-repo'
 os.mkdir(new_repo_path)
-git.exec_command(['init'], cwd=new_repo_path)
+git.exec_command('init', cwd=new_repo_path)
 ```
 
 ## Executing commands with separate environment:
@@ -36,6 +36,6 @@ commit_env['GIT_COMMITTER_EMAIL'] = 'me@email.com'
 
 new_repo_path = '/tmp/my-new-repo'
 
-git.exec_command(['add', '.'], cwd=new_repo_path)
-git.exec_command(['commit', '-m "first commit"'], cwd=new_repo_path, env=commit_env)
+git.exec_command('add', '.', cwd=new_repo_path)
+git.exec_command('commit', '-m "first commit"', cwd=new_repo_path, env=commit_env)
 ```
