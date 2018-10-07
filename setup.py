@@ -12,11 +12,11 @@ def get_file_content(file_name):
 
 
 about = {}
-exec(get_file_content(os.path.join(ROOT, 'git', '__version__.py'), 'r'), about)
+exec(get_file_content(os.path.join(ROOT, 'git', '__version__.py')), about)
 
 
 setuptools.setup(
-    name=['__title__'],
+    name=about['__title__'],
     version=about['__version__'],
     description=about['__description__'],
     long_description=get_file_content('README.md'),
@@ -24,7 +24,7 @@ setuptools.setup(
     author=about['__author__'],
     author_email=about['__author_email__'],
     url=about['__url__'],
-    packages=setuptools.find_packages(exclude=['tests*']),
+    packages=setuptools.find_packages(),
     classifiers=[
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
