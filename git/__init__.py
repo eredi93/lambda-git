@@ -1,17 +1,11 @@
-import logging
 import os
 import subprocess
 import tarfile
 from distutils.spawn import find_executable
 
 from .exceptions import GitExecutionError
+from .logging import LOGGER
 
-__author__ = 'Jacopo Scrinzi'
-__version__ = '0.0.1'
-
-logging.basicConfig()
-LOGGER = logging.getLogger('git')
-LOGGER.setLevel(logging.INFO)
 
 PKG_PATH = os.path.dirname(os.path.realpath(__file__))
 VENDOR_PATH = os.path.realpath('{}/../vendor'.format(PKG_PATH))
