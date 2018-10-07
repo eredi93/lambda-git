@@ -3,10 +3,10 @@
 #  )(__ /(__)\ )    ( ) _ <)(_) /(__)\   ( (_-._)(_  )(
 # (____(__)(__(_/\/\_(____(____(__)(__)   \___(____)(__)
 
-__title__ = 'lambda_git'
+__title__ = 'lambda-git'
 __description__ = 'A package to install git in AWS Lambda.'
 __url__ = 'https://github.com/eredi93/lambda-git'
-__version__ = '0.0.1'
+__version__ = '0.1.0'
 __author__ = 'Jacopo Scrinzi'
 __author_email__ = 'scrinzi.jacopo@gmail.com'
 __license__ = 'MIT'

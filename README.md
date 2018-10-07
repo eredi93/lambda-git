@@ -1,15 +1,24 @@
 # lambda-git
 A git binary installed through PyPI for AWS Lambda - inspired by the JavaScript package [lambda-git](https://github.com/pimterry/lambda-git) and backported to Python.
 
+## Installation
+
+```shell
+$ pip install lambda-git
+```
+
+## Usage
+
 To use this, just require it and call `exec_command`. E.g:
 
 ```python
 import git
 
-git.exec_command('init')
+git.exec_command('init') # will run 'git init'
 ```
 
-## Executing commands in a specific path:
+
+### Executing commands in a specific path:
 
 AWS Lambda give you only `/tmp` as working directory. This package by default will execute all commands in `/tmp`, but it can be overridden by passing `cwd`.
 
@@ -21,7 +30,7 @@ os.mkdir(new_repo_path)
 git.exec_command('init', cwd=new_repo_path)
 ```
 
-## Executing commands with separate environment:
+### Executing commands with separate environment:
 
 By default every git command will be executed with the system environment, but it can be overridden by setting `env`.
 
@@ -39,3 +48,13 @@ new_repo_path = '/tmp/my-new-repo'
 git.exec_command('add', '.', cwd=new_repo_path)
 git.exec_command('commit', '-m "first commit"', cwd=new_repo_path, env=commit_env)
 ```
+
+### Testing
+
+```shell
+$ python -m nose
+```
+
+## Contributing
+
+This repository is [open to contributions](CONTRIBUTING.md).
