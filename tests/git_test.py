@@ -1,9 +1,15 @@
 import os
 import mock
+import sys
 import unittest
-import StringIO
 
 import git
+
+if (sys.version_info > (3, 0)):
+    from io import StringIO
+    from importlib import reload
+else:
+    from StringIO import StringIO
 
 
 class GitTestCase(unittest.TestCase):
@@ -38,7 +44,7 @@ class GitTestCase(unittest.TestCase):
 
         PopenMock.return_value.communicate.return_value = ('output', 'error')
         PopenMock.return_value.returncode = 0
-        PipeMock.return_value = StringIO.StringIO()
+        PipeMock.return_value = StringIO()
 
         git.exec_command('checkout', '-b', branch_name)
 
