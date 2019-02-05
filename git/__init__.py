@@ -8,7 +8,7 @@ from .logging import LOGGER
 
 
 PKG_PATH = os.path.dirname(os.path.realpath(__file__))
-VENDOR_PATH = os.path.realpath('{}/../vendor'.format(PKG_PATH))
+VENDOR_PATH = os.path.realpath('{}/vendor'.format(PKG_PATH))
 GIT_VERSION = '2.4.3'
 GIT_TAR_FILE = '{}/git-{}.tar'.format(VENDOR_PATH, GIT_VERSION)
 TMP_PATH = '/tmp'

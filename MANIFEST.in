@@ -2,4 +2,4 @@ include *.in
 include *.lock
 include LICENSE
 include Pipfile
-recursive-include vendor *.tar
+include git/vendor/*.tar
