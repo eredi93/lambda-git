@@ -1,6 +1,7 @@
 import os
 import subprocess
 import tarfile
+import asyncio
 from distutils.spawn import find_executable
 
 from .exceptions import GitExecutionError
@@ -48,4 +49,21 @@ def exec_command(*args, **kwargs):
             'command={} returncode={} stdout="{}" '
             'stderr="{}"'.format(command, p.returncode, stdout, stderr)
         )
-    return stdout, stderr
+    return stdout, stderr, p.returncode
+
+async def async_exec_command(*args, **kwargs):
+    options = dict({'cwd': '/tmp', 'env': os.environ}, **kwargs)
+    command = ['git'] + list(args)
+    LOGGER.info('executing git command: "{}"'.format(' '.join(command)))
+    p = await asyncio.create_subprocess_shell(
+        command, cwd=options['cwd'],
+        stdout=asyncio.subprocess.PIPE, 
+        stderr=asyncio.subprocess.PIPE)
+    stdout, stderr = await p.communicate()
+    if p.returncode != 0:
+        LOGGER.error('git failed with {} returncode'.format(p.returncode))
+        raise GitExecutionError(
+            'command={} returncode={} stdout="{}" '
+            'stderr="{}"'.format(command, p.returncode, stdout.decode(), stderr.decode())
+        )
+    return stdout, stderr, p.returncode
